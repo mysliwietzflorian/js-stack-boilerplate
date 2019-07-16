@@ -6,7 +6,10 @@
     "type": "git",
     "url": "git://github.com/mysliwietzflorian/js-stack-boilerplate.git"
   },
-  "author": "mysliwietzflorian",
+  "author": {
+    "name": "Florian Mysliwietz",
+    "email": "myslflo1996@yahoo.de"
+  },
   "license": "MIT",
   "main": "index.js",
   "scripts": {

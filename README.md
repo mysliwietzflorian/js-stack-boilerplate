@@ -9,3 +9,14 @@ Choose one of the following options:
 - Install dependencies - `npm install`.
 - Start the server - `npm start`.
 - Browse to `localhost:8080` to view the static website.
+
+## Dependencies
+
+### Server
+- express (^4.17.1)
+- os (^0.1.1)
+
+### Client
+- bootstrap grid (4.3.1)
+- ionicons (4.5.10-0)
+- fonts.googleapis: `Source Sans Pro`

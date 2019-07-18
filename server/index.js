@@ -28,10 +28,10 @@ if (externalIp) {
 console.log('\nUse Ctrl+C to quit this process');
 
 function getIpAddress(name) {
-    let interfaces = os.networkInterfaces();
-    let result = interfaces[name] ?
-        interfaces[name].filter(details => {
-        return details.family == 'IPv4';
-    }) : [];
+    let interface = os.networkInterfaces()[name];
+    let result = interface ?
+        interface.filter(details => {
+            return details.family == 'IPv4';
+        }) : [];
     return result.length > 0 ? result[0].address : undefined;
 };

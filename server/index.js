@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+const http = require('http');
 const https = require('https');
 const os = require('os');
 
@@ -7,10 +8,15 @@ const app = express();
 
 app.use(express.static(`${__dirname}/../client/public`));
 
+http.createServer((req, res) => {
+    res.writeHead(301, {'Location': `https://${req.headers['host']}${req.url}`});
+    res.end();
+}, app).listen(80);
+
 https.createServer({
     key: fs.readFileSync('server.key'),
     cert: fs.readFileSync('server.cert')
-}, app).listen(8080, () => initializeServer());
+}, app).listen(443, () => initializeServer());
 
 function initializeServer() {
     let networkInterfaceName = process.argv.length > 2 ?
@@ -18,10 +24,10 @@ function initializeServer() {
     let externalIp = getIpAddress(networkInterfaceName);
 
     console.log('[INFO] Development server running!\n');
-    console.log('Local:    http://localhost:8080');
+    console.log('Local:    https://localhost:443');
 
     if (externalIp) {
-        console.log(`External: http://${getIpAddress(networkInterfaceName)}:8080`);
+        console.log(`External: https://${getIpAddress(networkInterfaceName)}:443`);
     } else {
         console.warn(`External: Network interface name '${networkInterfaceName}' is not valid.`);
         console.warn(`          Use one of the following as command line argument:\n`);

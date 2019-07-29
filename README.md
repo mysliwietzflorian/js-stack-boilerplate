@@ -2,7 +2,7 @@
 
 ## Quick start
 
-Choose one of the following options:
+Use the following instructions:
 
 - Clone the git repository - `git clone https://github.com/mysliwietzflorian/js-stack-boilerplate.git`.
 - Change to server directory - `cd js-stack-boilerplate/server`.
